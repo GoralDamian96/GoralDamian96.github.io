@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="css.css"> 
+        
+        <link rel="shortcut icon" href="#">
+        
+        
+    </head>
+    <body>
+        <div class="paint">
+            <div class="paint-bar">
+                
+                <input id="paintSize" type="range" class="paint-size" min="1" max="50" value="10">
+                
+                <input type="color" id="kolor" class="paint-color">   
+                
+                <div class="paint-buttons">
+                    
+                    
+                    <button data-mode="pen" id="pen" class="buttons" type="button" >
+                        pen
+                    </button>
+                    <button data-mode="eras" id="eraser"  class="buttons" type="button">
+                        eraser
+                    </button>                   
+                   
+                    <button data-mode="lin" id="line"  class="buttons" type="button">
+                        line
+                    </button>                    
+                    <button data-mode="rec" id="rectangle" class="buttons" type="button">
+                        rectangle
+                    </button>
+                    <button data-mode="ell" id="ellipse" class="buttons" type="button">
+                        ellipse
+                    </button>
+                     <button data-mode="tri" id="triangle" class="buttons" type="button">
+                         triangle
+                    </button>
+                    
+                    
+                    
+                     <button data-mode="cl" id="clear" onclick="clearCanvas()" class="buttons" type="button">
+                         clear
+                    </button>                                     
+                    <button data-mode="fill" id="fill" onclick="fillCanvas()" class="buttons" type="button">
+                         fill
+                    </button>                    
+                    <button data-mode="openF" id="openFile" onclick="openCanvas()" class="buttons" type="button">
+                         open
+                    </button>
+                    
+                  
+                </div>
+                
+            </div>            
+        </div>
+        
+        <canvas id="myCanvas" width="1000" height="800">
+        </canvas>
+         
+        <input id="file" accept="image/*" class="buttons" type="file" />
+        <script src="skrypt.js"></script>
+    </body>
+</html>
