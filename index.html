@@ -17,7 +17,8 @@ and open the template in the editor.
             <div id="rangee">Range:</div>
             <div id="myrange"><input type="range" id="range" min="1" max="50" value="10"></div>
             <div id="mycolor">Color: <input type="color" id="color" ></div>                   
-
+            <div id="myshapes">Shapes: <input type="range" id="shapes" min="3" max="10" value="3"></div>
+            <div id="myangles">Angles: <input type="range" id="angles" min="0" max="90" value="22.5"></div>
             <button data-mode="pen" id="pen"><img src="obrazy/pencil.png"></button>                
             <button data-mode="eras" id="eraser"><img src="obrazy/eraser.png"></button>                                                         
 
@@ -26,9 +27,13 @@ and open the template in the editor.
             <button id="ellipse"><img src="obrazy/ellipse.png"></button>                            
             <button id="triangle"><img src="obrazy/triangle.png"></button>                                                                 
             <button id="clear"><img src="obrazy/clear.png"></button>                                                     
-            <button id="fill"><img src="obrazy/fill.png"></button>                                      
+            <button id="fill"><img src="obrazy/fill.png"></button>   
+            <button id="polygon"><img src="obrazy/polygon.png"></button>
             <a href="" id="saveFile"><button id="safe">Save</button></a> 
             <button id="openFile" onclick="openFile()">Open</button>
+            <button id="changeRound" onclick="changeRound()">Round</button>
+            <button id="changeSquare" onclick="changeSquare()">Square</button>
+            <button id="changeButt" onclick="changeButt()">Butt</button>
 
             
         </div>

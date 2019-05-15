@@ -23,7 +23,8 @@ var clear=document.getElementById("clear");
 var saveFile=document.getElementById("saveFile");
 var fill=document.getElementById("fill");
 var trin=document.getElementById("triangle");
-
+var pol=document.getElementById("polygon");
+var shapes=document.getElementById("shapes");
 pen.style.border="2px solid red";
 
 
@@ -103,11 +104,37 @@ function drawEllipse(pos)
     ctx.arc(mousePosition.x,mousePosition.y,radius,0,2*Math.PI,false);
     ctx.stroke();
 }
+function drawPolygon(pos,sides,angle)
+{
+    ctx.strokeStyle=document.getElementById("color").value;
+    ctx.lineWidth=document.getElementById("range").value;  
+    var coordinates=[];
+    radius=Math.sqrt(Math.pow((mousePosition.x-pos.x),2)+Math.pow((mousePosition.x-pos.x),2));
+    index=0;
+    for(index=0; index<sides; index++){
+        coordinates.push({x:mousePosition.x+radius*Math.cos(angle),y:mousePosition.y-radius*Math.sin(angle)});
+        angle+=(2*Math.PI)/sides;
+    }
+    ctx.beginPath();
+    ctx.moveTo(coordinates[0].x,coordinates[0].y);
+    for(index=1; index<sides; index++){
+        ctx.lineTo(coordinates[index].x,coordinates[index].y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+}
+
+
+
+
+
 
 function drawRectangle(pos)
 {
     
+    
     ctx.beginPath();
+    
     ctx.strokeStyle=document.getElementById("color").value;
     ctx.lineWidth=document.getElementById("range").value;   
     ctx.rect(mousePosition.x,mousePosition.y,pos.x-mousePosition.x,pos.y-mousePosition.y);     
@@ -117,6 +144,14 @@ function openFile()
 {
     document.getElementById('file').click();
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -154,6 +189,21 @@ function getMousePos2(e)
 
 
 
+function changeButt()
+{
+    ctx.lineCap='butt';
+}
+function changeRound()
+{
+    ctx.lineCap='round';
+}
+
+function changeSquare()
+{
+    ctx.lineCap='square';
+}
+
+
 
 
 
@@ -174,12 +224,14 @@ function mouseMove(e)
     var pos;
     if (mouse===true)
     {
+        
        if (pen.style.border!=="2px solid red"&&eraser.style.border!=="2px solid red")
         {
             putcanvasImg();
         }
         pos=getMousePos(e);        
-        draw(pos);                
+        draw(pos);      
+        
     }    
 }
 
@@ -203,6 +255,8 @@ function mouseUp(e)
 
 function draw(pos)
 {             
+    var shape=document.getElementById("shapes").value;
+    var angle=document.getElementById("angles").value;
     if(pen.style.border==="2px solid red"||eraser.style.border==="2px solid red")
     {
         drawPen();
@@ -222,7 +276,11 @@ function draw(pos)
     if(trin.style.border==="2px solid red")
     {
         drawTriangle(pos);
-    }                 
+    }          
+    if(pol.style.border==="2px solid red")
+    {
+        drawPolygon(pos,shape,angle*(Math.PI/180));
+    }
 }
 function fillCanvas()
 {
@@ -241,7 +299,8 @@ function penClick()
     rec.style.border="none";
     ell.style.border="none";
     fill.style.border="none";
-
+    clear.style.border="none";
+    pol.style.border="none";
     
 }
 function eraserClick()
@@ -253,7 +312,8 @@ function eraserClick()
     rec.style.border="none";
     ell.style.border="none";    
     fill.style.border="none";
-
+    clear.style.border="none";
+    pol.style.border="none";
 }
 function lineClick()
 {               
@@ -264,7 +324,8 @@ function lineClick()
     rec.style.border="none";
     ell.style.border="none";
     fill.style.border="none";
-
+    clear.style.border="none";
+    pol.style.border="none";
 }
 function recClick()
 {
@@ -275,7 +336,8 @@ function recClick()
     rec.style.border="2px solid red";
     ell.style.border="none";
     fill.style.border="none";
-
+    clear.style.border="none";
+    pol.style.border="none";
 }
 function ellClick()
 {
@@ -286,7 +348,8 @@ function ellClick()
     rec.style.border="none";
     ell.style.border="2px solid red";
     fill.style.border="none";
-
+    clear.style.border="none";
+    pol.style.border="none";
 }
 
 function triangleClick()
@@ -298,6 +361,9 @@ function triangleClick()
     rec.style.border="none";
     ell.style.border="none";
     fill.style.border="none";
+    clear.style.border="none";
+    pol.style.border="none";
+
 
 }
 function fillClick()
@@ -309,6 +375,8 @@ function fillClick()
     trin.style.border="none";
     rec.style.border="none";
     ell.style.border="none";    
+    clear.style.border="none";
+    pol.style.border="none";
     fillCanvas();
 }
 
@@ -316,8 +384,28 @@ function fillClick()
 function clearClick()
 {
     window.location.reload();
+    fill.style.border="none";
+    eraser.style.border="none";
+    pen.style.border="none";
+    line.style.border="none";
+    trin.style.border="none";
+    rec.style.border="none";
+    ell.style.border="none"; 
+    clear.style.border="2px solid red";
+    pol.style.border="none";
 }
-
+function polClick()
+{
+    pol.style.border="2px solid red";
+    eraser.style.border="none";
+    pen.style.border="none";
+    line.style.border="none";
+    trin.style.border="none";
+    rec.style.border="none";
+    ell.style.border="none";    
+    fill.style.border="none";
+    clear.style.border="none";
+}
 
 function saveClick()
 {
@@ -347,7 +435,8 @@ function init()
     ell.addEventListener("click",ellClick);
     line.addEventListener("click",lineClick);
     trin.addEventListener("click",triangleClick);
-    fill.addEventListener("click",fillClick)
+    fill.addEventListener("click",fillClick);
+    pol.addEventListener("click",polClick);
     
     document.getElementById('file'),addEventListener('change',function(e)
          {
