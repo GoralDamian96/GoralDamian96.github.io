@@ -345,7 +345,6 @@ function penClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
-    cos.style.border="none";
     
 }
 function eraserClick()
@@ -359,7 +358,6 @@ function eraserClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
-    cos.style.border="none";
 }
 function lineClick()
 {               
@@ -372,7 +370,6 @@ function lineClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
-    cos.style.border="none";
 }
 function recClick()
 {
@@ -385,7 +382,6 @@ function recClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
-    cos.style.border="none";
 }
 function ellClick()
 {
@@ -398,7 +394,6 @@ function ellClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
-    cos.style.border="none";
 }
 
 function triangleClick()
@@ -412,7 +407,6 @@ function triangleClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
-cos.style.border="none";
 
 }
 function fillClick()
@@ -426,7 +420,6 @@ function fillClick()
     ell.style.border="none";    
     clear.style.border="none";
     pol.style.border="none";
-    cos.style.border="none";
     fillCanvas();
 }
 
@@ -443,7 +436,6 @@ function clearClick()
     ell.style.border="none"; 
     clear.style.border="2px solid red";
     pol.style.border="none";
-    cos.style.border="none";
 }
 function polClick()
 {
@@ -456,21 +448,9 @@ function polClick()
     ell.style.border="none";    
     fill.style.border="none";
     clear.style.border="none";
-    cos.style.border="none";
+    
 }
-function changecos()
-{
-    pol.style.border="none";
-    eraser.style.border="none";
-    pen.style.border="none";
-    line.style.border="none";
-    trin.style.border="none";
-    rec.style.border="none";
-    ell.style.border="none";    
-    fill.style.border="none";
-    clear.style.border="none";
-    cos.style.border="2px solid red"
-}
+
 
 function saveClick()
 {
