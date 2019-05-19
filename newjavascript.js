@@ -25,7 +25,10 @@ var fill=document.getElementById("fill");
 var trin=document.getElementById("triangle");
 var pol=document.getElementById("polygon");
 var shapes=document.getElementById("shapes");
+var cos=document.getElementById("changecos");
 pen.style.border="2px solid red";
+
+
 
 
 function  getcanvasImg()
@@ -49,6 +52,10 @@ function fillCanvas()
     ctx.fillRect(0,0,canvas.width,canvas.height); 
 }
 
+
+
+
+
 function drawLine(pos)
 {
     ctx.beginPath();
@@ -58,7 +65,6 @@ function drawLine(pos)
     ctx.lineWidth=document.getElementById("range").value;
     ctx.stroke();
 }
-
 function drawPen()
 {   
     canvas.addEventListener('mousemove',getMousePos2);    
@@ -78,8 +84,34 @@ function drawPen()
                            
     });
     canvas.addEventListener('mouseup',function(){mouse=false;});
-    
 }
+//function drawCostam(pos)
+//{    
+//    var img = new Image();
+//    img.src = 'http://www.tricedesigns.com/wp-content/uploads/2012/01/brush2.png';
+//    ctx.strokeStyle=document.getElementById("range");
+//    ctx.shadowColor=document.getElementById("color");
+//    var dist = Math.sqrt(Math.pow(pos.x - mousePosition.x, 2) + Math.pow(pos.y - mousePosition.y, 2));        
+//    var angle = Math.atan2( pos.x - mousePosition.x, pos.y - mousePosition.y );     
+//    canvas.addEventListener('mousemove',getMousePos2); 
+//    canvas.addEventListener('mousedown',function()
+//    {        
+//        mouse=true;                
+//        for (var i = 0; i < dist; i++) {
+//          x = mousePosition.x + (Math.sin(angle) * i) - 25;
+//          y = mousePosition.y + (Math.cos(angle) * i) - 25;
+//          ctx.moveTo(img, x, y);
+//        }
+//        ctx.stroke();
+//
+//    mousePosition = pos;
+//  });
+    
+    
+    
+    
+//    canvas.addEventListener('mouseup',function(){mouse=false;});
+//}
 function drawTriangle(pos)
 {
     ctx.beginPath();
@@ -91,7 +123,6 @@ function drawTriangle(pos)
     ctx.lineTo(mousePosition.x,mousePosition.y);
     ctx.stroke();
 }
-
 function drawEllipse(pos)
 {
     
@@ -124,11 +155,6 @@ function drawPolygon(pos,sides,angle)
     ctx.stroke();
 }
 
-
-
-
-
-
 function drawRectangle(pos)
 {
     
@@ -144,6 +170,8 @@ function openFile()
 {
     document.getElementById('file').click();
 }
+
+
 
 
 
@@ -192,17 +220,27 @@ function getMousePos2(e)
 function changeButt()
 {
     ctx.lineCap='butt';
+    ctx.strokeStyle=document.getElementById("color").value;
+    ctx.shadowBlur=0;
 }
 function changeRound()
 {
     ctx.lineCap='round';
+    ctx.strokeStyle=document.getElementById("color").value;
+    ctx.shadowBlur=0;
 }
 
 function changeSquare()
 {
-    ctx.lineCap='square';
+    ctx.lineCap='square'; 
+    ctx.strokeStyle=document.getElementById("color").value;
+    ctx.shadowBlur=0;
 }
-
+function changeShadow()
+{
+    ctx.shadowBlur=10;
+    ctx.shadowColor=document.getElementById("color").value;
+}
 
 
 
@@ -215,8 +253,10 @@ function changeSquare()
 function mouseDown(e)
 {
     mouse=true;
-    mousePosition=getMousePos(e);    
+    mousePosition=getMousePos(e);   
+    
     getcanvasImg();   
+    
 }
 
 function mouseMove(e)
@@ -281,6 +321,10 @@ function draw(pos)
     {
         drawPolygon(pos,shape,angle*(Math.PI/180));
     }
+//    if(cos.style.border==="2px solid red")
+//    {
+//       drawCostam(pos);
+//    }
 }
 function fillCanvas()
 {
@@ -301,6 +345,7 @@ function penClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    cos.style.border="none";
     
 }
 function eraserClick()
@@ -314,6 +359,7 @@ function eraserClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    cos.style.border="none";
 }
 function lineClick()
 {               
@@ -326,6 +372,7 @@ function lineClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    cos.style.border="none";
 }
 function recClick()
 {
@@ -338,6 +385,7 @@ function recClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    cos.style.border="none";
 }
 function ellClick()
 {
@@ -350,6 +398,7 @@ function ellClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    cos.style.border="none";
 }
 
 function triangleClick()
@@ -363,7 +412,7 @@ function triangleClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
-
+cos.style.border="none";
 
 }
 function fillClick()
@@ -377,6 +426,7 @@ function fillClick()
     ell.style.border="none";    
     clear.style.border="none";
     pol.style.border="none";
+    cos.style.border="none";
     fillCanvas();
 }
 
@@ -393,6 +443,7 @@ function clearClick()
     ell.style.border="none"; 
     clear.style.border="2px solid red";
     pol.style.border="none";
+    cos.style.border="none";
 }
 function polClick()
 {
@@ -405,6 +456,20 @@ function polClick()
     ell.style.border="none";    
     fill.style.border="none";
     clear.style.border="none";
+    cos.style.border="none";
+}
+function changecos()
+{
+    pol.style.border="none";
+    eraser.style.border="none";
+    pen.style.border="none";
+    line.style.border="none";
+    trin.style.border="none";
+    rec.style.border="none";
+    ell.style.border="none";    
+    fill.style.border="none";
+    clear.style.border="none";
+    cos.style.border="2px solid red"
 }
 
 function saveClick()

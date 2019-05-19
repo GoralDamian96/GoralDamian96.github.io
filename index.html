@@ -12,16 +12,10 @@ and open the template in the editor.
         <link rel="stylesheet" href="css.css">
          <link rel="shortcut icon" href="#">
     </head>
-    <body>
-        <div id="toolbars">
-            <div id="rangee">Range:</div>
-            <div id="myrange"><input type="range" id="range" min="1" max="50" value="10"></div>
-            <div id="mycolor">Color: <input type="color" id="color" ></div>                   
-            <div id="myshapes">Shapes: <input type="range" id="shapes" min="3" max="10" value="3"></div>
-            <div id="myangles">Angles: <input type="range" id="angles" min="0" max="90" value="22.5"></div>
-            <button data-mode="pen" id="pen"><img src="obrazy/pencil.png"></button>                
-            <button data-mode="eras" id="eraser"><img src="obrazy/eraser.png"></button>                                                         
-
+    <body>        
+        <div id="toolbars">                        
+            <button id="pen"><img src="obrazy/pencil.png"></button>                
+            <button id="eraser"><img src="obrazy/eraser.png"></button>                                                     
             <button id="line"><img src="obrazy/line.png"></button>                                                
             <button id="rectangle"><img src="obrazy/rectangle.png"></button>                            
             <button id="ellipse"><img src="obrazy/ellipse.png"></button>                            
@@ -30,18 +24,35 @@ and open the template in the editor.
             <button id="fill"><img src="obrazy/fill.png"></button>   
             <button id="polygon"><img src="obrazy/polygon.png"></button>
             <a href="" id="saveFile"><button id="safe">Save</button></a> 
-            <button id="openFile" onclick="openFile()">Open</button>
-            <button id="changeRound" onclick="changeRound()">Round</button>
-            <button id="changeSquare" onclick="changeSquare()">Square</button>
-            <button id="changeButt" onclick="changeButt()">Butt</button>
-
-            
+            <button id="openFile" onclick="openFile()">Open</button>                        
         </div>
-
-
+        
+        <div class="box">
+            <div class="box__content">
+              <div class="box__title">Tools</div>
+              
+                <div id="rangee">Range:</div>
+                <div id="myrange"><input type="range" id="range" min="1" max="50" value="10"></div>
+                <div id="mycolor">Color: <input type="color" id="color" ></div>                   
+                <div id="myshapes">Shapes: <input type="range" id="shapes" min="3" max="10" value="3"></div>
+                <div id="myangles">Angles: <input type="range" id="angles" min="0" max="90" value="22.5"></div>
+              </div>            
+        </div>
+        
+        <div class="box2">
+            <div class="box__content2">
+              <div class="box__title2">Effects</div>
+                <button id="changeRound" onclick="changeRound()">Round</button>
+                <button id="changeSquare" onclick="changeSquare()">Square</button>
+                <button id="changeButt" onclick="changeButt()">Butt</button>      
+                <button id="changeShadow" onclick="changeShadow()">Shadow</button>
+                <button id="changecos" onclick="changecos()">cos</button>
+              </div>            
+        </div>
 
         <input id="file" accept="image/*" type="file" />
         <canvas id="canvas"> xd</canvas>
         <script src="newjavascript.js"></script>
+        
     </body>
 </html>
