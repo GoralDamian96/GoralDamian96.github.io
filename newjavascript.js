@@ -413,7 +413,7 @@ function drawCostam5()
   var el = document.getElementById('canvas');
   var ctx = el.getContext('2d');
 
-  ctx.lineJoin = ctx.lineCap = 'round';
+  
   var isDrawing, lastPoint;
 
   el.onmousedown = function(e) {
