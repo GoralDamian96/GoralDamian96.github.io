@@ -25,8 +25,19 @@ var fill=document.getElementById("fill");
 var trin=document.getElementById("triangle");
 var pol=document.getElementById("polygon");
 var shapes=document.getElementById("shapes");
-var cos=document.getElementById("changecos");
-pen.style.border="2px solid red";
+var angles=document.getElementById("angles");
+var brush=document.getElementById("brush");
+var fur=document.getElementById("fur");
+var pen_wid=document.getElementById("pen_wid");
+var penmul=document.getElementById("penmul");
+var thick=document.getElementById("thick");
+var pennor=document.getElementById("pen_norm");
+var rysone=document.getElementById("rysone");
+var rystwo=document.getElementById("rystwo");
+var rysthree=document.getElementById("rysthree");
+var rysfour=document.getElementById("rysfour");
+
+
 
 
 
@@ -61,6 +72,7 @@ function drawLine(pos)
     ctx.beginPath();
     ctx.moveTo(mousePosition.x,mousePosition.y);
     ctx.lineTo(pos.x, pos.y);
+    
     ctx.strokeStyle=document.getElementById("color").value;
     ctx.lineWidth=document.getElementById("range").value;
     ctx.stroke();
@@ -80,38 +92,636 @@ function drawPen()
         {
             ctx.strokeStyle="white";
         }
+        if(rysone.style.border==="2px solid red"||thick.style.border==="2px solid red"||brush.style.border==="2px solid red"||fur.style.border==="2px solid red")
+        {
+            ctx.strokeStyle = "rgba(0, 0, 0, 0)";            
+        }
+        if(pen_wid.style.border==="2px solid red")
+        {
+            document.getElementById("range").value="1";
+            
+        }
+       
         ctx.moveTo(mousePosition.x,mousePosition.y);        
                            
     });
-    canvas.addEventListener('mouseup',function(){mouse=false;});
+    canvas.addEventListener('mouseup',function(){
+       
+        mouse=false;});
 }
-//function drawCostam(pos)
-//{    
-//    var img = new Image();
-//    img.src = 'http://www.tricedesigns.com/wp-content/uploads/2012/01/brush2.png';
-//    ctx.strokeStyle=document.getElementById("range");
-//    ctx.shadowColor=document.getElementById("color");
-//    var dist = Math.sqrt(Math.pow(pos.x - mousePosition.x, 2) + Math.pow(pos.y - mousePosition.y, 2));        
-//    var angle = Math.atan2( pos.x - mousePosition.x, pos.y - mousePosition.y );     
-//    canvas.addEventListener('mousemove',getMousePos2); 
-//    canvas.addEventListener('mousedown',function()
-//    {        
-//        mouse=true;                
-//        for (var i = 0; i < dist; i++) {
-//          x = mousePosition.x + (Math.sin(angle) * i) - 25;
-//          y = mousePosition.y + (Math.cos(angle) * i) - 25;
-//          ctx.moveTo(img, x, y);
-//        }
-//        ctx.stroke();
-//
-//    mousePosition = pos;
-//  });
+function pendraw()
+{    
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="2px solid red";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
     
     
+    var el = document.getElementById('canvas');
+    ctx = el.getContext('2d');
+    
+    el.onmousedown = function() {
+        
+      return;
+    };
+
+    el.onmousemove = function() {
+      return;
+    };
+
+    el.onmouseup = function() {
+      return;
+    };
+}
+function drawCostam()
+{    
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="2px solid red";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
     
     
-//    canvas.addEventListener('mouseup',function(){mouse=false;});
-//}
+    var img = new Image();
+    img.src = 'obrazy/brush2.png';
+
+    function distanceBetween(point1, point2) {
+      return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
+    }
+    function angleBetween(point1, point2) {
+      return Math.atan2( point2.x - point1.x, point2.y - point1.y );
+    }
+
+    var el = document.getElementById('canvas');
+    
+    
+
+    var isDrawing, lastPoint;
+
+    el.onmousedown = function(e) {
+        
+      isDrawing = true;
+      lastPoint = { x: e.clientX, y: e.clientY };
+    };
+
+    el.onmousemove = function(e) {
+      if (!isDrawing) return;
+
+      var currentPoint = { x: e.clientX, y: e.clientY };
+      var dist = distanceBetween(lastPoint, currentPoint);
+      var angle = angleBetween(lastPoint, currentPoint);
+
+      for (var i = 0; i < dist; i++) {
+        x = lastPoint.x + (Math.sin(angle) * i) - 25;
+        y = lastPoint.y + (Math.cos(angle) * i) - 25;
+        ctx.drawImage(img, x, y);
+      }
+
+      lastPoint = currentPoint;
+    };
+
+    el.onmouseup = function() {
+      isDrawing = false;
+    };
+}
+function drawCostam2()
+{
+    thick.style.border="none";
+    fur.style.border="2px solid red";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
+    
+    
+    var img = new Image();
+    img.src = 'obrazy/brush2.png';
+    img.crossOrigin = "Anonymous";
+    img.width = 10;
+
+    function distanceBetween(point1, point2) {
+      return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
+    }
+    function angleBetween(point1, point2) {
+      return Math.atan2( point2.x - point1.x, point2.y - point1.y );
+    }
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    var el = document.getElementById('canvas');
+    var ctx = el.getContext('2d');
+    
+
+    var isDrawing, lastPoint;
+
+    el.onmousedown = function(e) {
+      isDrawing = true;
+      lastPoint = { x: e.clientX, y: e.clientY };
+    };
+
+    el.onmousemove = function(e) {
+      if (!isDrawing) return;
+
+      var currentPoint = { x: e.clientX, y: e.clientY };
+      var dist = distanceBetween(lastPoint, currentPoint);
+      var angle = angleBetween(lastPoint, currentPoint);
+
+      for (var i = 0; i < dist; i++) {
+        x = lastPoint.x + (Math.sin(angle) * i);
+        y = lastPoint.y + (Math.cos(angle) * i);
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(0.5, 0.5);
+        ctx.rotate(Math.PI * 180 / getRandomInt(0, 180));
+        ctx.drawImage(img, 0, 0);
+        ctx.restore();
+      }
+
+      lastPoint = currentPoint;
+    };
+
+    el.onmouseup = function() {
+      isDrawing = false;
+    };
+}
+function drawCostam3()
+{
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="2px solid red";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
+    
+    
+   document.getElementById("range").value="1";
+    
+    
+    function distanceBetween(point1, point2) {
+      return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
+    }
+    function angleBetween(point1, point2) {
+      return Math.atan2( point2.x - point1.x, point2.y - point1.y );
+    }
+
+    var el = document.getElementById('canvas');
+    
+    ctx.fillStyle = "black";
+    
+
+    var isDrawing, lastPoint;
+
+    el.onmousedown = function(e) {
+          
+      isDrawing = true;
+      lastPoint = { x: e.clientX, y: e.clientY };
+    };
+
+    el.onmousemove = function(e) {
+      if (!isDrawing) return;
+      var currentPoint = { x: e.clientX, y: e.clientY };
+      var dist = distanceBetween(lastPoint, currentPoint);
+      var angle = angleBetween(lastPoint, currentPoint);
+
+      for (var i = 0; i < dist; i+=5) {
+        x = lastPoint.x + (Math.sin(angle) * i) - 25;
+        y = lastPoint.y + (Math.cos(angle) * i) - 25;
+        ctx.beginPath();
+        ctx.arc(x+10, y+10, 20, false, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      lastPoint = currentPoint;
+    };
+
+    el.onmouseup = function() {
+      isDrawing = false;
+    };
+}
+function drawCostam4()
+{
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="2px solid red";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
+    
+    
+       function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      var el = document.getElementById('canvas');
+      
+
+      
+      var isDrawing, points = [ ];
+
+var rect=canvas.getBoundingClientRect();
+      el.onmousedown = function(e) {
+          getcanvasImg(); 
+        isDrawing = true;
+        points.push({ 
+          x: e.clientX-rect.left, 
+          y: e.clientY-rect.top,
+          width: getRandomInt(3, 7)
+        });
+      };
+
+      el.onmousemove = function(e) {
+        if (!isDrawing) return;
+        putcanvasImg();
+        
+
+        points.push({ 
+          x: e.clientX-rect.left, 
+          y: e.clientY-rect.top,
+          width: getRandomInt(3, 7)
+        });
+
+        for (var i = 1; i < points.length; i++) {
+          ctx.beginPath();
+          ctx.moveTo(points[i-1].x, points[i-1].y);
+          ctx.lineWidth = points[i].width;
+          ctx.lineTo(points[i].x, points[i].y);
+          ctx.stroke();
+        }
+      };
+
+      el.onmouseup = function() {
+        
+        isDrawing = false;
+        points.length = 0;
+      };
+}
+function drawCostam5()
+{
+    thick.style.border="2px solid red";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
+    
+    
+            function drawPixels(x, y) {
+    for (var i = -10; i < 10; i+= 4) {
+      for (var j = -10; j < 10; j+= 4) {
+        if (Math.random() > 0.5) {
+          ctx.fillStyle = ['red', 'orange', 'yellow', 'green', 
+                           'light-blue', 'blue', 'purple'][getRandomInt(0,6)];
+          ctx.fillRect(x+i, y+j, 4, 4);
+        }
+      }
+    }
+  }
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  var el = document.getElementById('canvas');
+  var ctx = el.getContext('2d');
+
+  ctx.lineJoin = ctx.lineCap = 'round';
+  var isDrawing, lastPoint;
+
+  el.onmousedown = function(e) {
+    isDrawing = true;
+    lastPoint = { x: e.clientX, y: e.clientY };
+  };
+  el.onmousemove = function(e) {
+    if (!isDrawing) return;
+
+    drawPixels(e.clientX, e.clientY);
+
+    lastPoint = { x: e.clientX, y: e.clientY };
+  };
+  el.onmouseup = function() {
+    isDrawing = false;
+  };
+}
+
+function drawCostam6()
+{
+    
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="2px solid red";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
+    
+    var el = document.getElementById('canvas');
+    
+    
+    ctx.strokeStyle = document.getElementById("color").value;
+    var rect=canvas.getBoundingClientRect();
+    var clientX, clientY, timeout;
+    var density = 60;
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    el.onmousedown = function(e) {
+      
+      clientX = e.clientX-rect.left;
+      clientY = e.clientY-rect.top;
+
+      timeout = setTimeout(function draw() {
+        for (var i = density; i--; ) {
+          var radius = 40;
+          var offsetX = getRandomInt(-radius, radius);
+          var offsetY = getRandomInt(-radius, radius);
+          ctx.fillRect(clientX + offsetX, clientY + offsetY,1, 1);
+        }
+        if (!timeout) return;
+        timeout = setTimeout(draw, 60);
+      }, 50);
+    };
+    el.onmousemove = function(e) {
+      clientX = e.clientX-rect.left;
+      clientY = e.clientY-rect.top;
+    };
+    el.onmouseup = function() {
+      clearTimeout(timeout);
+    };
+}
+function drawCostam7()
+{
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="2px solid red";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
+    
+    
+    function midPointBtw(p1, p2) {
+    return {
+      x: p1.x + (p2.x - p1.x) / 2,
+      y: p1.y + (p2.y - p1.y) / 2
+    };
+  }
+
+  var el = document.getElementById('canvas');
+ 
+
+  
+  document.getElementById("range").value="1";
+  ctx.strokeStyle = document.getElementById("color");
+  var rect=canvas.getBoundingClientRect();
+ 
+  var isDrawing, points = [ ];
+
+  el.onmousedown = function(e) {
+      getcanvasImg();  
+    isDrawing = true;
+    points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+  };
+
+  el.onmousemove = function(e) {
+    if (!isDrawing) return;
+    putcanvasImg();
+    points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+    
+
+    stroke(offsetPoints(-10));
+    stroke(offsetPoints(-5));
+    stroke(points);
+    stroke(offsetPoints(5));
+    stroke(offsetPoints(10));
+  };
+
+  function offsetPoints(val) {
+    var offsetPoints = [ ];
+    for (var i = 0; i < points.length; i++) {
+      offsetPoints.push({ 
+        x: points[i].x + val,
+        y: points[i].y + val
+      });
+    }
+    return offsetPoints;
+  }
+
+  function stroke(points) {
+    var p1 = points[0];
+    var p2 = points[1];
+
+    ctx.beginPath();
+    ctx.moveTo(p1.x, p1.y);
+
+    for (var i = 1, len = points.length; i < len; i++) {
+      // we pick the point between pi+1 & pi+2 as the
+      // end point and p1 as our control point
+      var midPoint = midPointBtw(p1, p2);
+      ctx.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
+      p1 = points[i];
+      p2 = points[i+1];
+    }
+   
+    ctx.lineTo(p1.x, p1.y);
+    ctx.stroke();
+  }
+
+  el.onmouseup = function() {
+    isDrawing = false;
+    points.length = 0;
+  };
+
+}
+
+function drawCostam8()
+{
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="2px solid red";
+    rysfour.style.border="none";
+    
+    var el = document.getElementById('canvas');
+    
+
+    document.getElementById("range").value="1";
+    ctx.strokeStyle = document.getElementById("color");
+    var rect=canvas.getBoundingClientRect();
+
+    var isDrawing, points = [ ];
+
+    el.onmousedown = function(e) {
+        getcanvasImg(); 
+      isDrawing = true;
+      points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+    };
+
+    el.onmousemove = function(e) {
+      if (!isDrawing) return;
+      putcanvasImg();
+      
+      points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (var i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+        var nearPoint = points[i-5];
+        if (nearPoint) {
+          ctx.moveTo(nearPoint.x, nearPoint.y);
+          ctx.lineTo(points[i].x, points[i].y);
+        }
+      }
+      ctx.stroke();
+    };
+
+    el.onmouseup = function() {
+      isDrawing = false;
+      points.length = 0;
+    };
+}
+function drawCostam9()
+{
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="2px solid red";
+    
+    var el = document.getElementById('canvas');
+    
+
+    document.getElementById("range").value="1";
+    ctx.strokeStyle = document.getElementById("color");
+    var rect=canvas.getBoundingClientRect();
+    
+   
+   
+
+    var isDrawing, points = [ ];
+
+    el.onmousedown = function(e) {
+         
+      points = [ ];
+      isDrawing = true;
+      points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+    };
+
+    el.onmousemove = function(e) {
+      if (!isDrawing) return;
+      
+      
+      points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+
+      ctx.beginPath();
+      ctx.moveTo(points[points.length - 2].x, points[points.length - 2].y);
+      ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+      ctx.stroke();
+
+      for (var i = 0, len = points.length; i < len; i++) {
+        dx = points[i].x - points[points.length-1].x;
+        dy = points[i].y - points[points.length-1].y;
+        d = dx * dx + dy * dy;
+
+        if (d < 1000) {
+          
+          ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+          ctx.moveTo( points[points.length-1].x + (dx * 0.2), points[points.length-1].y + (dy * 0.2));
+          ctx.lineTo( points[i].x - (dx * 0.2), points[i].y - (dy * 0.2));
+          ctx.stroke();
+        }
+      }
+    };
+
+    el.onmouseup = function() {
+        
+      
+      isDrawing = false;
+      points.length = 0;
+    };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function drawTriangle(pos)
 {
     ctx.beginPath();
@@ -241,7 +851,11 @@ function changeShadow()
     ctx.shadowBlur=10;
     ctx.shadowColor=document.getElementById("color").value;
 }
-
+function nochangeShadow()
+{
+    ctx.shadowBlur=0;
+    ctx.shadowColor=document.getElementById("color").value;
+}
 
 
 
@@ -252,6 +866,7 @@ function changeShadow()
 
 function mouseDown(e)
 {
+    
     mouse=true;
     mousePosition=getMousePos(e);   
     
@@ -261,6 +876,7 @@ function mouseDown(e)
 
 function mouseMove(e)
 {
+    
     var pos;
     if (mouse===true)
     {
@@ -321,10 +937,8 @@ function draw(pos)
     {
         drawPolygon(pos,shape,angle*(Math.PI/180));
     }
-//    if(cos.style.border==="2px solid red")
-//    {
-//       drawCostam(pos);
-//    }
+    
+
 }
 function fillCanvas()
 {
@@ -346,6 +960,7 @@ function penClick()
     clear.style.border="none";
     pol.style.border="none";
     
+    
 }
 function eraserClick()
 {        
@@ -358,6 +973,7 @@ function eraserClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    pendraw();
 }
 function lineClick()
 {               
@@ -370,6 +986,7 @@ function lineClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    pendraw();
 }
 function recClick()
 {
@@ -382,6 +999,7 @@ function recClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    pendraw();
 }
 function ellClick()
 {
@@ -394,6 +1012,7 @@ function ellClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    pendraw();
 }
 
 function triangleClick()
@@ -407,6 +1026,7 @@ function triangleClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
+    pendraw();
 
 }
 function fillClick()
@@ -420,6 +1040,7 @@ function fillClick()
     ell.style.border="none";    
     clear.style.border="none";
     pol.style.border="none";
+    
     fillCanvas();
 }
 
@@ -436,6 +1057,7 @@ function clearClick()
     ell.style.border="none"; 
     clear.style.border="2px solid red";
     pol.style.border="none";
+    
 }
 function polClick()
 {
@@ -448,8 +1070,10 @@ function polClick()
     ell.style.border="none";    
     fill.style.border="none";
     clear.style.border="none";
-    
+    pendraw();
 }
+
+
 
 
 function saveClick()
@@ -468,7 +1092,7 @@ function init()
     canvas.addEventListener("mousedown",mouseDown,false);
     canvas.addEventListener("mousemove",mouseMove,false);
     canvas.addEventListener("mouseup",mouseUp,false);
-    canvas.width=window.innerWidth;
+    canvas.width=window.innerWidth; 
     canvas.height=window.innerHeight;
     ctx.lineCap='round';
     
@@ -482,6 +1106,22 @@ function init()
     trin.addEventListener("click",triangleClick);
     fill.addEventListener("click",fillClick);
     pol.addEventListener("click",polClick);
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     document.getElementById('file'),addEventListener('change',function(e)
          {

@@ -24,7 +24,7 @@ canvas
     margin-top: 8px;
     position: relative;
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
     margin-right: 20px;
     font-size: 20px;
     font-weight: 500;
@@ -38,7 +38,7 @@ canvas
     margin-top: 8px;
     position: relative;
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
     
     font-size: 20px;
     font-weight: 500;
@@ -53,7 +53,7 @@ canvas
     margin-top: 8px;
     position: relative;
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
     
     font-size: 20px;
     font-weight: 500;
@@ -67,7 +67,7 @@ canvas
     margin-top: 8px;
     position: relative;
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
     margin-right: 10px;
     font-size: 20px;
     font-weight: 500;
@@ -86,7 +86,7 @@ canvas
     cursor:pointer;
     
 }
-#safe,#openFile
+#safe,#openFile,#changeSquare,#changeButt,#changeRound
 {
     position: relative;
     float:right;
@@ -99,21 +99,8 @@ canvas
     margin-top: 5px;
     margin-right: 5px;
 }
-#changeSquare
-{
-    margin-top: 10px;
-    position: relative;
-    float: left;
-    font-family: Verdana;
-    background-color: white;
-    text-align: center;
-    cursor:pointer; 
-    height: 30px;
-    width: 70px;
-    margin-top: 5px;
-    margin-right: 5px;
-}
-#changeRound
+
+#changeShadow,#NchangeShadow
 {
     margin-top: 10px;
     float: left;
@@ -127,7 +114,7 @@ canvas
     margin-top: 5px;
     margin-right: 5px;
 }
-#changeButt
+#brush
 {
     margin-top: 10px;
     float: left;
@@ -141,7 +128,7 @@ canvas
     margin-top: 5px;
     margin-right: 5px;
 }
-#changeShadow
+#fur
 {
     margin-top: 10px;
     float: left;
@@ -155,7 +142,49 @@ canvas
     margin-top: 5px;
     margin-right: 5px;
 }
-#changecos
+#pen_norm,#rysfour,#rysone,#rysthree,#rystwo
+{
+    margin-top: 10px;
+    float: left;
+    position: relative;
+    font-family: Verdana;
+    background-color: white;
+    text-align: center;
+    cursor:pointer; 
+    height: 30px;
+    width: 70px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+#pen_wid
+{
+    margin-top: 10px;
+    float: left;
+    position: relative;
+    font-family: Verdana;
+    background-color: white;
+    text-align: center;
+    cursor:pointer; 
+    height: 30px;
+    width: 70px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+#penmul
+{
+    margin-top: 10px;
+    float: left;
+    position: relative;
+    font-family: Verdana;
+    background-color: white;
+    text-align: center;
+    cursor:pointer; 
+    height: 30px;
+    width: 70px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+#thick
 {
     margin-top: 10px;
     float: left;
@@ -246,4 +275,9 @@ canvas
     top: 70px;
     transform: rotate(-90deg);
     width: 106px;
+}
+
+#changerange
+{
+    color:red;
 }
