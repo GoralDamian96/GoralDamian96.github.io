@@ -36,11 +36,12 @@ var rysone=document.getElementById("rysone");
 var rystwo=document.getElementById("rystwo");
 var rysthree=document.getElementById("rysthree");
 var rysfour=document.getElementById("rysfour");
+var rysfife=document.getElementById("rysfife");
 
+var grd=document.getElementById("gradient");
+var ngrd=document.getElementById("normalcolor");
 
-
-
-
+ngrd.style.border="2px solid red";
 
 function  getcanvasImg()
 {
@@ -73,7 +74,7 @@ function drawLine(pos)
     ctx.moveTo(mousePosition.x,mousePosition.y);
     ctx.lineTo(pos.x, pos.y);
     
-    ctx.strokeStyle=document.getElementById("color").value;
+    
     ctx.lineWidth=document.getElementById("range").value;
     ctx.stroke();
 }
@@ -82,6 +83,7 @@ function drawPen()
     canvas.addEventListener('mousemove',getMousePos2);    
     canvas.addEventListener('mousedown',function()
     {        
+        
         mouse=true;
         ctx.beginPath();   
         if(pen.style.border==="2px solid red")
@@ -92,14 +94,10 @@ function drawPen()
         {
             ctx.strokeStyle="white";
         }
-        if(rysone.style.border==="2px solid red"||thick.style.border==="2px solid red"||brush.style.border==="2px solid red"||fur.style.border==="2px solid red")
-        {
-            ctx.strokeStyle = "rgba(0, 0, 0, 0)";            
-        }
+        
         if(pen_wid.style.border==="2px solid red")
         {
-            document.getElementById("range").value="1";
-            
+            document.getElementById("range").value="1";            
         }
        
         ctx.moveTo(mousePosition.x,mousePosition.y);        
@@ -121,6 +119,7 @@ function pendraw()
     rystwo.style.border="none";
     rysthree.style.border="none";
     rysfour.style.border="none";
+    rysfife.style.border="none";
     
     
     var el = document.getElementById('canvas');
@@ -151,7 +150,8 @@ function drawCostam()
     rystwo.style.border="none";
     rysthree.style.border="none";
     rysfour.style.border="none";
-    
+    rysfife.style.border="none";
+    penClick();
     
     var img = new Image();
     img.src = 'obrazy/brush2.png';
@@ -207,7 +207,8 @@ function drawCostam2()
     rystwo.style.border="none";
     rysthree.style.border="none";
     rysfour.style.border="none";
-    
+    rysfife.style.border="none";
+    penClick();
     
     var img = new Image();
     img.src = 'obrazy/brush2.png';
@@ -272,7 +273,8 @@ function drawCostam3()
     rystwo.style.border="none";
     rysthree.style.border="none";
     rysfour.style.border="none";
-    
+    rysfife.style.border="none";
+    penClick();
     
    document.getElementById("range").value="1";
     
@@ -332,7 +334,8 @@ function drawCostam4()
     rystwo.style.border="none";
     rysthree.style.border="none";
     rysfour.style.border="none";
-    
+    rysfife.style.border="none";
+    penClick();
     
        function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -392,7 +395,8 @@ function drawCostam5()
     rystwo.style.border="none";
     rysthree.style.border="none";
     rysfour.style.border="none";
-    
+    rysfife.style.border="none";
+    penClick();
     
             function drawPixels(x, y) {
     for (var i = -10; i < 10; i+= 4) {
@@ -445,11 +449,12 @@ function drawCostam6()
     rystwo.style.border="none";
     rysthree.style.border="none";
     rysfour.style.border="none";
-    
+    rysfife.style.border="none";
+    penClick();
     var el = document.getElementById('canvas');
     
     
-    ctx.strokeStyle = document.getElementById("color").value;
+    
     var rect=canvas.getBoundingClientRect();
     var clientX, clientY, timeout;
     var density = 60;
@@ -494,7 +499,8 @@ function drawCostam7()
     rystwo.style.border="2px solid red";
     rysthree.style.border="none";
     rysfour.style.border="none";
-    
+    rysfife.style.border="none";
+    penClick();
     
     function midPointBtw(p1, p2) {
     return {
@@ -508,7 +514,7 @@ function drawCostam7()
 
   
   document.getElementById("range").value="1";
-  ctx.strokeStyle = document.getElementById("color");
+  
   var rect=canvas.getBoundingClientRect();
  
   var isDrawing, points = [ ];
@@ -582,12 +588,13 @@ function drawCostam8()
     rystwo.style.border="none";
     rysthree.style.border="2px solid red";
     rysfour.style.border="none";
-    
+    rysfife.style.border="none";
+    penClick();
     var el = document.getElementById('canvas');
     
 
     document.getElementById("range").value="1";
-    ctx.strokeStyle = document.getElementById("color");
+    
     var rect=canvas.getBoundingClientRect();
 
     var isDrawing, points = [ ];
@@ -634,12 +641,14 @@ function drawCostam9()
     rystwo.style.border="none";
     rysthree.style.border="none";
     rysfour.style.border="2px solid red";
+    rysfife.style.border="none";
+    penClick();
     
     var el = document.getElementById('canvas');
     
 
     document.getElementById("range").value="1";
-    ctx.strokeStyle = document.getElementById("color");
+   
     var rect=canvas.getBoundingClientRect();
     
    
@@ -672,7 +681,7 @@ function drawCostam9()
 
         if (d < 1000) {
           
-          ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+          ctx.strokeStyle = document.getElementById("color");
           ctx.moveTo( points[points.length-1].x + (dx * 0.2), points[points.length-1].y + (dy * 0.2));
           ctx.lineTo( points[i].x - (dx * 0.2), points[i].y - (dy * 0.2));
           ctx.stroke();
@@ -683,6 +692,107 @@ function drawCostam9()
     el.onmouseup = function() {
         
       
+      isDrawing = false;
+      points.length = 0;
+    };
+}
+
+function drawCostam10()
+{
+    
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
+    rysfife.style.border="2px solid red";
+    penClick();
+    
+    
+    
+    var rect=canvas.getBoundingClientRect();
+    var el = document.getElementById('canvas');
+    ctx = el.getContext('2d');
+    var isDrawing;
+
+    var isDrawing, points = [ ];
+
+    el.onmousedown = function(e) {
+        getcanvasImg(); 
+      isDrawing = true;
+      points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+    };
+
+    el.onmousemove = function(e) {
+      if (!isDrawing) return;
+putcanvasImg();
+      
+      points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (var i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      ctx.stroke();
+    };
+
+    el.onmouseup = function() {
+      isDrawing = false;
+      points.length = 0;
+    };
+}
+function drawCostam11()
+{
+    
+    thick.style.border="none";
+    fur.style.border="none";
+    pen_wid.style.border="none";
+    penmul.style.border="none";
+    brush.style.border="none";
+    pennor.style.border="none";
+    rysone.style.border="none";
+    rystwo.style.border="none";
+    rysthree.style.border="none";
+    rysfour.style.border="none";
+    rysfife.style.border="2px solid red";
+    penClick();
+    
+    
+    
+    var rect=canvas.getBoundingClientRect();
+    var el = document.getElementById('canvas');
+    ctx = el.getContext('2d');
+    var isDrawing;
+
+    var isDrawing, points = [ ];
+
+    el.onmousedown = function(e) {
+        getcanvasImg(); 
+      isDrawing = true;
+      points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+    };
+
+    el.onmousemove = function(e) {
+      if (!isDrawing) return;
+putcanvasImg();
+      
+      points.push({ x: e.clientX-rect.left, y: e.clientY-rect.top });
+
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (var i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      ctx.stroke();
+    };
+
+    el.onmouseup = function() {
       isDrawing = false;
       points.length = 0;
     };
@@ -719,13 +829,10 @@ function drawCostam9()
 
 
 
-
-
-
 function drawTriangle(pos)
 {
     ctx.beginPath();
-    ctx.strokeStyle=document.getElementById("color").value;
+   
     ctx.lineWidth=document.getElementById("range").value;
     ctx.moveTo(mousePosition.x,mousePosition.y);
     ctx.lineTo(pos.x,mousePosition.y);
@@ -740,14 +847,14 @@ function drawEllipse(pos)
     
     ctx.beginPath();
     
-    ctx.strokeStyle=document.getElementById("color").value;
+    
     ctx.lineWidth=document.getElementById("range").value;
     ctx.arc(mousePosition.x,mousePosition.y,radius,0,2*Math.PI,false);
     ctx.stroke();
 }
 function drawPolygon(pos,sides,angle)
 {
-    ctx.strokeStyle=document.getElementById("color").value;
+    
     ctx.lineWidth=document.getElementById("range").value;  
     var coordinates=[];
     radius=Math.sqrt(Math.pow((mousePosition.x-pos.x),2)+Math.pow((mousePosition.x-pos.x),2));
@@ -771,7 +878,7 @@ function drawRectangle(pos)
     
     ctx.beginPath();
     
-    ctx.strokeStyle=document.getElementById("color").value;
+    
     ctx.lineWidth=document.getElementById("range").value;   
     ctx.rect(mousePosition.x,mousePosition.y,pos.x-mousePosition.x,pos.y-mousePosition.y);     
     ctx.stroke();
@@ -856,7 +963,31 @@ function nochangeShadow()
     ctx.shadowBlur=0;
     ctx.shadowColor=document.getElementById("color").value;
 }
-
+function grad()
+{
+   
+    grd.style.border="2px solid red";
+    ngrd.style.border="none";
+    var g=ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+    g.addColorStop(0,document.getElementById("color").value);
+    g.addColorStop(1,"black");
+    ctx.strokeStyle=g; 
+    if(rysone.style.border==="2px solid red"||thick.style.border==="2px solid red"||brush.style.border==="2px solid red"||fur.style.border==="2px solid red")
+    {
+        ctx.strokeStyle = "rgba(0, 0, 0, 0)";            
+    }
+}
+function norcol()
+{
+    grd.style.border="none";
+    ngrd.style.border="2px solid red";
+    
+    ctx.strokeStyle=document.getElementById("color").value;
+    if(rysone.style.border==="2px solid red"||thick.style.border==="2px solid red"||brush.style.border==="2px solid red"||fur.style.border==="2px solid red")
+    {
+        ctx.strokeStyle = "rgba(0, 0, 0, 0)";            
+    }
+}
 
 
 
@@ -867,16 +998,17 @@ function nochangeShadow()
 function mouseDown(e)
 {
     
+    ctx.globalAlpha=document.getElementById("opa").value;
+     
     mouse=true;
     mousePosition=getMousePos(e);   
     
-    getcanvasImg();   
-    
+    getcanvasImg();       
 }
 
 function mouseMove(e)
 {
-    
+     ctx.globalAlpha=document.getElementById("opa").value;
     var pos;
     if (mouse===true)
     {
@@ -893,7 +1025,7 @@ function mouseMove(e)
 
 function mouseUp(e)
 {
-   
+    ctx.globalAlpha=document.getElementById("opa").value;
     mouse=false;
     if (pen.style.border!=="2px solid red"&&eraser.style.border!=="2px solid red")
     {
@@ -913,6 +1045,14 @@ function draw(pos)
 {             
     var shape=document.getElementById("shapes").value;
     var angle=document.getElementById("angles").value;
+    if(grd.style.border==="2px solid red")
+    {
+        grad();
+    }
+    if(ngrd.style.border==="2px solid red")
+    {
+        norcol();
+    }
     if(pen.style.border==="2px solid red"||eraser.style.border==="2px solid red")
     {
         drawPen();
@@ -1026,8 +1166,8 @@ function triangleClick()
     fill.style.border="none";
     clear.style.border="none";
     pol.style.border="none";
-    pendraw();
-
+    
+pendraw();
 }
 function fillClick()
 {
@@ -1111,7 +1251,7 @@ function init()
     
     
     
-    
+   
     
     
     

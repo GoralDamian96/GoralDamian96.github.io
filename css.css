@@ -62,7 +62,7 @@ canvas
     white-space: nowrap;
     cursor: pointer;
 }
-#myrange,#myangles
+#myrange,#myangles,#opacity
 {
     margin-top: 8px;
     position: relative;
@@ -76,7 +76,7 @@ canvas
     white-space: nowrap;
     cursor: pointer;
 }
-#pen, #eraser,#ellipse,#triangle,#line,#fill,#rectangle,#clear,#polygon
+#rysfife, #eraser,#ellipse,#triangle,#line,#fill,#rectangle,#clear,#polygon
 {
     position: relative;
     float:left;
@@ -86,7 +86,7 @@ canvas
     cursor:pointer;
     
 }
-#safe,#openFile,#changeSquare,#changeButt,#changeRound
+#safe,#openFile,#changeSquare,#changeButt,#changeRound,#gradient,#normalcolor
 {
     position: relative;
     float:right;
@@ -199,6 +199,7 @@ canvas
     margin-right: 5px;
 }
 #file{opacity: 0;}
+#pen{opacity:0;}
 
 .box {
     background: black;
