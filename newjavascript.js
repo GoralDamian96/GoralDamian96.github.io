@@ -976,6 +976,10 @@ function grad()
     {
         ctx.strokeStyle = "rgba(0, 0, 0, 0)";            
     }
+    if(eraser.style.border==="2px solid red")
+    {
+        ctx.strokeStyle="white";
+    }
 }
 function norcol()
 {
@@ -986,6 +990,10 @@ function norcol()
     if(rysone.style.border==="2px solid red"||thick.style.border==="2px solid red"||brush.style.border==="2px solid red"||fur.style.border==="2px solid red")
     {
         ctx.strokeStyle = "rgba(0, 0, 0, 0)";            
+    }
+    if(eraser.style.border==="2px solid red")
+    {
+        ctx.strokeStyle="white";
     }
 }
 
