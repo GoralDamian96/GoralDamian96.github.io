@@ -11,6 +11,8 @@ var mouse=false;
 var positionX, positionY;
 var canvasImg;
 var mousePosition;
+var cPushArray;
+var cStep;
 
 var pen=document.getElementById("pen");
 var eraser=document.getElementById("eraser");
@@ -47,22 +49,24 @@ function  getcanvasImg()
 {
     canvasImg=ctx.getImageData(0,0,canvas.width,canvas.height);    
 }
-
 function  putcanvasImg()
 {
    ctx.putImageData(canvasImg,0,0);    
 }
-
 function clearCanvas()
 {
     ctx.clearRect(0,0,canvas.width, canvas.height);
 }
-
 function fillCanvas()
 {
     ctx.fillStyle=document.getElementById("color").value;    
     ctx.fillRect(0,0,canvas.width,canvas.height); 
 }
+
+
+
+
+
 
 
 
@@ -860,6 +864,7 @@ function getMousePos(e)
         x: e.clientX-rect.left,
         y: e.clientY-rect.top
     };
+    
 }
 
 function getMousePos2(e)
@@ -983,7 +988,7 @@ function mouseMove(e)
 }
 
 function mouseUp(e)
-{
+{   cPush();
     ctx.globalAlpha=document.getElementById("opa").value;
     mouse=false;
     if (pen.style.border!=="2px solid red"&&eraser.style.border!=="2px solid red")
@@ -991,7 +996,8 @@ function mouseUp(e)
         putcanvasImg();                        
     }
     var pos=getMousePos(e);
-    draw(pos);    
+    draw(pos);   
+    
 }
 
 
@@ -1182,6 +1188,40 @@ function saveClick()
     saveFile.href=data;
     saveFile.download="myImage.png";
 }
+cPushArray=new Array();
+    cStep=-1;
+
+function cPush()
+{
+    cStep++;
+    if(cStep<cPushArray.length)
+    {
+        cPushArray.length=cStep;
+    }
+    cPushArray.push(document.getElementById("canvas").toDataURL());
+    document.title = cStep + ":" + cPushArray.length;
+}
+function goBack()
+{
+    if(cStep>0)   
+    {
+        cStep--;
+        var canvasPic=new Image();
+        canvasPic.src=cPushArray[cStep];
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvasPic.onload=function(){ctx.drawImage(canvasPic,0,0,canvas.width,canvas.height);}
+        document.title = cStep + ":" + cPushArray.length;
+    }
+    
+}
+function drawImage()
+{
+    var image=new Image();
+    image.src='myimg'
+}
+
+
+
 
 function init()
 {
