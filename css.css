@@ -86,7 +86,7 @@ canvas
     cursor:pointer;
     
 }
-#safe,#openFile,#changeSquare,#changeButt,#changeRound,#gradient,#normalcolor,#backbutton
+#safe,#openFile,#changeSquare,#changeButt,#changeRound,#gradient,#normalcolor,#backbutton,#redobutton,#plus,#minus
 {
     position: relative;
     float:right;

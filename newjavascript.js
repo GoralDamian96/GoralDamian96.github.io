@@ -477,6 +477,7 @@ function drawCostam6()
           var radius = 40;
           var offsetX = getRandomInt(-radius, radius);
           var offsetY = getRandomInt(-radius, radius);
+          ctx.fillStyle=document.getElementById("color").value;
           ctx.fillRect(clientX + offsetX, clientY + offsetY,1, 1);
         }
         if (!timeout) return;
@@ -845,10 +846,16 @@ function openFile()
 
 
 
-
-
-
-
+function minuscanvas()
+{           
+    canvas.width-=100; 
+    canvas.height-=100;
+}
+function pluscanvas()
+{   
+    canvas.width+=100; 
+    canvas.height+=100;
+}
 
 
 
@@ -972,7 +979,7 @@ function mouseDown(e)
 
 function mouseMove(e)
 {
-     ctx.globalAlpha=document.getElementById("opa").value;
+    ctx.globalAlpha=document.getElementById("opa").value;
     var pos;
     if (mouse===true)
     {
@@ -988,8 +995,9 @@ function mouseMove(e)
 }
 
 function mouseUp(e)
-{   cPush();
+{   
     ctx.globalAlpha=document.getElementById("opa").value;
+    cPush();
     mouse=false;
     if (pen.style.border!=="2px solid red"&&eraser.style.border!=="2px solid red")
     {
@@ -1210,14 +1218,17 @@ function goBack()
         canvasPic.src=cPushArray[cStep];
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvasPic.onload=function(){ctx.drawImage(canvasPic,0,0,canvas.width,canvas.height);}
-        document.title = cStep + ":" + cPushArray.length;
+        
     }
     
 }
-function drawImage()
-{
-    var image=new Image();
-    image.src='myimg'
+function goForward() {
+    if (cStep < cPushArray.length-1) {
+        cStep++;
+        var canvasPic = new Image();
+        canvasPic.src = cPushArray[cStep];
+        canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+    }
 }
 
 
