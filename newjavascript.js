@@ -849,12 +849,15 @@ function openFile()
 function minuscanvas()
 {           
     canvas.width-=100; 
+ 
     canvas.height-=100;
+    
 }
 function pluscanvas()
 {   
     canvas.width+=100; 
     canvas.height+=100;
+    
 }
 
 
